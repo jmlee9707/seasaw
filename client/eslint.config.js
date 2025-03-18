@@ -9,20 +9,28 @@ import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
 export default tseslint.config(
 	{ ignores: ['dist'] },
 	{
-		extends: [js.configs.recommended, ...tseslint.configs.recommended],
+		extends: [
+			js.configs.recommended,
+			...tseslint.configs.recommended,
+			'plugin:prettier/recommended',
+		],
 		files: ['**/*.{ts,tsx}'],
 		languageOptions: {
 			ecmaVersion: 2020,
 			globals: globals.browser,
 		},
-		plugins: {
-			'react-hooks': reactHooks,
-			'react-refresh': reactRefresh,
-		},
+		plugins: [
+			'prettier',
+			{
+				'react-hooks': reactHooks,
+				'react-refresh': reactRefresh,
+			},
+		],
 		rules: {
 			...reactHooks.configs.recommended.rules,
 			'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 			'react/no-unknown-property': ['error', { ignore: ['css'] }],
+			'prettier/prettier': 'error',
 		},
 	},
 	eslintPluginPrettier,

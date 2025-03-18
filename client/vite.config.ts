@@ -26,6 +26,7 @@ export default defineConfig({
 			{ find: '@utils', replacement: resolve('src/utils') },
 			{ find: '@constants', replacement: resolve('src/constants') },
 			{ find: '@api', replacement: resolve('src/api') },
+			{ find: '@layout', replacement: resolve('src/layout') },
 		],
 	},
 });
