@@ -1,22 +1,19 @@
-import { Global } from '@emotion/react';
-import styled from '@emotion/styled';
-import { globalStyles } from './styles/globalStyle';
-import reactLogo from './assets/react.svg';
+import CouponPage from '@pages/coupon';
+import PrepayPage from '@pages/prepay';
+import DefaultLayout from '@layout/defaultLayout';
+import { Route, Routes } from 'react-router-dom';
+import MainPage from './pages';
 
 function App() {
 	return (
-		<>
-			<Global styles={globalStyles} />
-			<div>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-					<Test>안녕</Test>
-				</a>
-			</div>
-		</>
+		<Routes>
+			<Route element={<DefaultLayout />}>
+				<Route index path="/" element={<MainPage />} />
+				<Route index path="/coupon" element={<CouponPage />} />
+				<Route path="/prepay" element={<PrepayPage />} />
+			</Route>
+		</Routes>
 	);
 }
 
 export default App;
-
-const Test = styled('div')``;
